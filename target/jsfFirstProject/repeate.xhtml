@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <title>repeate page</title>
+    </h:head>
+
+    <h:body>
+        <!-- ui:repeate -->
+        <!--
+                <ul>
+                    <ui:repeat value="#{collection.listUser}" var="oneUser">
+                        <h3>whatever repeated</h3>
+                        <li>#{oneUser.nom}  </li>
+
+                    </ui:repeat>
+                </ul>
+        -->
+        <h3>datatable au dessous</h3><br /><br />
+
+        <h:form>
+        <h:dataTable var="oneUser" value="#{collection.listUser}" >
+
+            <h:column><f:facet name="header">Nom</f:facet>
+                <h:inputText value="#{oneUser.nom}" rendered="#{oneUser.editable}" />
+                <h:outputText value="#{oneUser.nom}" rendered="#{!oneUser.editable}" />
+            </h:column>
+
+            <h:column><f:facet name="header">prenom</f:facet>
+                <h:inputText value="#{oneUser.prenom}" rendered="#{oneUser.editable}" />
+                <h:outputText value="#{oneUser.prenom}" rendered="#{!oneUser.editable}" />
+            </h:column>
+
+            <h:column><f:facet name="header">email</f:facet>
+                <h:inputText value="#{oneUser.email}" rendered="#{oneUser.editable}" />
+                <h:outputText value="#{oneUser.email}" rendered="#{!oneUser.editable}" />
+            </h:column>
+
+            <h:column> <h:commandButton value="Edit" action="#{collection.editableStudent(oneUser)}" /> </h:column>
+            <h:column>  <h:commandButton value="delete" action="#{collection.deleteEditable(oneUser)}"/> </h:column>
+            <h:column>  <h:commandButton value="ok" action="#{collection.saveEditable(oneUser)}" /> </h:column>
+
+        </h:dataTable>
+        </h:form>
+    </h:body>
+</html>

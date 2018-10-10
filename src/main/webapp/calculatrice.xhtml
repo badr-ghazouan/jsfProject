@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>whatever</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h:inputText value="#{calculator.oper1}" />
+        <h:selectOneRadio value="#{calculator.operation}">
+            <f:selectItem itemValue="+" itemLabel="+" />&#160;&#160;
+            <f:selectItem itemValue="-" itemLabel="-" />&#160;&#160;
+            <f:selectItem itemValue="*" itemLabel="*" />&#160;&#160;
+            <f:selectItem itemValue="/" itemLabel="/" />
+        </h:selectOneRadio><br />
+        <h:inputText value="#{calculator.oper2}" />
+        <h:commandButton value="calculate"
+                         action="#{calculator.calculate(calculator.oper1,calculator.oper2,calculator.operation)}"
+        /><br/>
+        <h:outputText value="result = #{calculator.result}" />
+
+    </h:form>
+</h:body>
+</html>
